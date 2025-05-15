@@ -7,7 +7,7 @@ public class JSExe {
 	// main ctrl + space
 	public static void main(String[] args) {
 		int num1 = 30;
-		int num2 = 30;
+		int num2 = 30; 
 //		System.out.println(num1 == num2);
 
 		String str1 = new String("Hello");
@@ -27,13 +27,31 @@ public class JSExe {
 
 //		test2();// 평균 구하기 소수점 자리 까지
 //		test3();// 스캐너 사용 
-		test4();
+//		test4();
+		test5();
 	}// end of main
+	
+	
+	public static void test5() {
+		//printf ("형식문자열", 값1,값2... 괄호 안의 첫번째 문자열 형식대로 출력한다.) 
+		//println 괄호 안의 내용을 출력하고 행을 바꾼다)	
+		//%s 뒤에 오는 문자열을 받아 온다. %d는 뒤에 오는 정수를 받아 온다. (소수점은 f)
+		// \t : tab(탭) \n: 줄바꿈
+		System.out.printf("%s %d\t", "문자",30);
+		System.out.println("문자");
+		//홍길동,100, 23.9
+		System.out.printf("%s %d %.1f\n", "홍길동",100,23.9);
+		
+		System.out.printf("%s\n", "안녕하세요.이름은 김성수 입니다.");
+		System.out.printf("%s %d%s\n","나이는 만",30,"세입니다");
+		System.out.printf("%s %.1f%s", "몸무게는",80.1,"입니다.");
+	} 
+	 
 
 	public static void test4() {
 		Scanner scn = new Scanner(System.in); // 사용자 입력을 위한 Scanner 생성
 		String str = "친구 목록은 "; // 누적할 문자열의 시작 부분 (변수선언)
-
+		
 		while (true) {
 			System.out.println("친구이름 입력. 종료하려면 quit>>");
 			String msg = scn.nextLine(); // 사용자 입력 한 줄을 받음
@@ -47,8 +65,8 @@ public class JSExe {
 			System.out.println("입력한 값은 " + msg); // 입력된 이름을 출력
 		}
 
-		System.out.println(str); // 최종 친구 목록 출력
-	}
+		System.out.println(str); // 최종 친구 목록
+	
 
 }// end of test4.
 

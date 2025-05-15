@@ -9,7 +9,7 @@ public class HelloJava {
 	
 	num1 = (int) num2; //강제형변환(casting)
 	
-	int num3 = 100;
+	int num3 = 100; 
 	double num4 = 200;
 	double result = (double) num3 + num4;
 	System.out.println("결과는" + result);
