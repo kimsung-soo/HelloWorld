@@ -4,46 +4,37 @@ import java.util.Scanner;
 
 public class IfExe {
 
-    public static void main(String[] args) {
-
-        Scanner scn = new Scanner(System.in);
-        int randomValue = (int) (Math.random() * 1000) + 1; 
-        int count = 0;
-
-        
-        while (true) {
-            System.out.print("1~1000 사이의 숫자를 입력하세요: ");
-            int userInput = Integer.parseInt(scn.nextLine());
-
-            if (userInput < 1 || userInput > 1000) {
-                System.out.println("1~1000까지 숫자를 입력하세요.");
-                continue;
-            }
-
-            count++;
-
-            
-            if (randomValue < userInput) {
-                System.out.println("입력값보다 작습니다.");
-            } else if (randomValue > userInput) {
-                System.out.println("입력값보다 큽니다.");
-            } else {
-                System.out.println("정답입니다! 시도 횟수는 " + count + "번입니다.");
-                break;
-            }
-        }
-
-       
-    }
-
-
+	public static void main(String[] args) {
+		// 1 ~ 1000 사이의 임의의 값을 생성. randomValue = 567
+		// 500입력하면 "입력값보다 큽니다", "입력값보다 작습니다"
+		// "정답입니다" 프로그램 종료.
+		// 시도한 회수.
+		Scanner scn = new Scanner(System.in);
+		int randomValue = (int) (Math.random() * 1000) + 1;
+		int trial = 0; // 시도한 횟수
+		while (true) {
+			trial++; // 시도한 횟수 카운트.
+			System.out.print("1 ~ 1000 사이의 값을 입력>> ");
+			int num = Integer.parseInt(scn.nextLine());
+			// 입력값과 임의의 생성값을 비교한다.
+			if (randomValue == num) {
+				System.out.println("정답입니다.");
+				break; // 반복문 종료.
+			}
+			// 크거나 작거나 하면 계속 반복.
+			if (randomValue > num) {
+				System.out.println("입력값보다 큽니다.");
+			} else {
+				System.out.println("입력값보다 작습니다.");
+			}
+		} // end of while.
+		System.out.printf("임의의 값은 %d입니다. 시도한 횟수: %d\n", randomValue, trial);
+	}
 
 	public static void test() {
 		int score = 85;
 
-		// if(절) 조건문
-
-		// if. java 안에서는 조건식을 () 안에 넣어야 된다.
+		// if.
 //		if (score >= 90) {
 //			System.out.println("A학점");
 //		} else if (score >= 80) {
@@ -53,10 +44,7 @@ public class IfExe {
 //		} else {
 //			System.out.println("불합격");
 //		}
-
-		// switch(절) 조건문
-
-		score = score / 10;
+		score = score / 10; // 9
 		switch (score) {
 		case 10:
 		case 9:
@@ -70,6 +58,7 @@ public class IfExe {
 			break;
 		default:
 			System.out.println("불합격");
-		}// end of switch
+		} // end of switch.
+
 	}
 }
