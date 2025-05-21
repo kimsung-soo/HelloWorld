@@ -19,7 +19,7 @@ public class Board {
 		this.writer =writer;
 	}
 	//getter,setter
-	public int getBoarNo() {
+	public int getBoardNo() {
 		return boardNo;
 	}
 	public void setBoarNo(int boarNo) {
@@ -57,6 +57,8 @@ public class Board {
 		strFormat += "내용: %s\n";
 		System.out.printf(strFormat,boardNo,writer,title,content);
 	}
+	
+	
 	}
 	
 	
