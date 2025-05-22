@@ -1,11 +1,9 @@
 package com.yedam;
 
-public class CalendarExe {
-public static void main(String[] args) {
-	Calendar cal= new Calendar();
-	        Calendar.showMonth();
-	        
-	}
-	
-}
+import com.yedam.api.MyCalendar;
 
+public class CalendarExe {
+    public static void main(String[] args) {
+        MyCalendar.showMonth(2025, 5);
+    }
+}

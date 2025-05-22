@@ -2,8 +2,6 @@ package com.yedam.board;
 
 import java.util.Scanner;
 
-import com.yedam.Calendar;
-
 /*
  * 추가(addBoard)
  * /수정(modifyBoard) - 글번호, 바뀔내용, 바뀔제목
@@ -35,20 +33,32 @@ public class BoardExe {
 		boards[10] = new Board(20, "자바가[20] 힘들어요", "자바는 힘들지 않아요...", "김민규");
 	}
 
-	// 메소드.
-	void execute() {
-
+	boolean loginCheck() {
 		// 3번 기회. 숙제. 2025년 05월 21일.
 		// 아이디 입력.
 		// 비밀번호 입력.
-		String id = userMessage("아이디를 입력");
-		String pw = userMessage("비밀번호를 입력");
-		// 로그인 성공하면...
-		if (!UserExe.login(id, pw)) {
-			System.out.println("아이디와 비밀번호를 확인하세요.");
-			return;
+		for (int i = 1; i <= 3; i++) {
+			String id = userMessage("아이디를 입력");
+			String pw = userMessage("비밀번호를 입력");
+			// 로그인 성공하면...
+			if (!UserExe.login(id, pw)) {
+				System.out.println("아이디와 비밀번호를 확인하세요.");
+				if (i == 3) {
+					System.out.println("3번실패했습니다. 종료합니다");
+					return false;
+				}
+				continue;
+			} // 실패의 경우
+			return true; // 로그인을 성공하면 언제라도 반복문을 빠져 나와서 코드 실행.
 		}
-		System.out.println("환영합니다!!!");
+		return false;
+	}
+
+	// 메소드.
+	void execute() {
+		if (loginCheck()) {
+			return; // execute() 메소드 종료
+		}
 
 		boolean run = true;
 		while (run) {
@@ -56,7 +66,15 @@ public class BoardExe {
 			System.out.println("1.추가 2.수정 3.삭제 4.목록 5.종료");
 			System.out.println("--------------------------------------");
 			System.out.print("선택>> ");
-			int selectNo = Integer.parseInt(scn.nextLine());
+			// 문자를 숫자 변경 예외발생
+			int selectNo = 0;
+			
+			try {
+				int selectno = Integer.parseInt(scn.nextLine());
+			} catch (NumberFormatException e) {
+				System.out.println("1~5번중에 선택.");
+				continue;
+			}
 			switch (selectNo) {
 			case 1: // 추가.
 				addBoard();
