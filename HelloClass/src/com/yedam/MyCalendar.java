@@ -28,4 +28,8 @@ public class MyCalendar {
 
         System.out.println();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/kimsung-soo/HelloWorld.git

@@ -53,4 +53,8 @@ public class CalendarExe {
                 now.get(Calendar.DATE),
                 now.getActualMaximum(Calendar.DATE));
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/kimsung-soo/HelloWorld.git

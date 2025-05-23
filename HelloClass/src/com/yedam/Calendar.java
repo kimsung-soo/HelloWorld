@@ -11,4 +11,8 @@ public class Calendar {
 	}
     
     
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/kimsung-soo/HelloWorld.git
