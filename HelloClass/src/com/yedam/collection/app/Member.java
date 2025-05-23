@@ -1,4 +1,4 @@
-package com.yedam.member;
+package com.yedam.collection.app;
 
 public class Member {
 	//필드
