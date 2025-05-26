@@ -9,19 +9,7 @@ import com.yedam.member.Member;
  * 순서를 가지고 
  */
 
-class Student {
-	private int studendNo; // 1001.1002.1003....1010
-	private int score;
 
-	public Student(int studendNo, int score) {
-		this.studendNo = studendNo;
-		this.score = score;
-	}
-
-	public int getScore() {
-		return score;
-	}
-}
 
 public class ListExe {
 	public static void main(String[] args) {
