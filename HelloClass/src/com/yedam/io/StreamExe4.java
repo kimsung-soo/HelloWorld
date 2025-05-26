@@ -33,6 +33,7 @@ public class StreamExe4 {
 	public static void main(String[] args) {
 
 		try {
+			//기본 -> 객체.
 			InputStream is =new FileInputStream("c:/temp/object.db");
 			ObjectInputStream ois = new ObjectInputStream(is);
 			
