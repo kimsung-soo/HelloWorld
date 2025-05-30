@@ -31,6 +31,7 @@ public class DogDAO extends DAO {
             
             // 영향 받은 행(row) 수 반환 (1 이상이면 성공)
             return r;
+            
         } catch (SQLException e) {
             e.printStackTrace();  // 예외 발생 시 에러 로그 출력
         } finally {
