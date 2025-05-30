@@ -43,7 +43,7 @@ public class DogDAO extends DAO {
 
     // tbl_dogs 테이블의 모든 강아지 정보를 조회하는 메서드
     public List<Dogs> getDogList() {
-        String sql = "SELECT * FROM tbl_dogs";  // 전체 조회 SQL
+        String sql = "SELECT * FROM tbl_dogs ORDER BY id ASC";  // 전체 조회 SQL
         getConnect();  // DB 연결
         
         List<Dogs> list = new ArrayList<>();  // 결과를 저장할 리스트

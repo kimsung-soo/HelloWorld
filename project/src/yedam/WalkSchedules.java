@@ -1,10 +1,10 @@
 package yedam;
 
 public class WalkSchedules {
-    private int dogId;
-    private String dateTime;
-    private String location;
-    private int walkTime;
+  public int dogId;
+  public String dateTime;
+  public String location;
+  public int walkTime;
 
     public WalkSchedules() {}
 
@@ -49,6 +49,6 @@ public class WalkSchedules {
 
     @Override
     public String toString() {
-        return "강아지 번호:" + dogId + ", 산책날짜: " + dateTime + ", 장소: " + location + ", 산책시간: " + walkTime + "";
+        return "강아지 번호:" + dogId + ", 산책날짜: " + dateTime + ", 장소: " + location + ", 산책시간: " + walkTime + "분";
     }
 }

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 public class DAO {
     // 데이터베이스 접속 정보 (Oracle 기준)
@@ -44,4 +45,9 @@ public class DAO {
             e.printStackTrace(); // 자원 해제 도중 에러 발생 시 출력
         }
     }
+
+	public static List<String> Names(String dogName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
