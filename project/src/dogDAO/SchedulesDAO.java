@@ -1,15 +1,18 @@
-package yedam;
+package dogDAO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-//  SchedulesDAO 클래스 
+import Dogvalue.WalkSchedules;
+
+
 
 // DAO 클래스를 상속받아, 산책 일정(tbl_walk_schedules) 테이블을 다루는 DB 접근 클래스
 public class SchedulesDAO extends DAO {
 
 	/// ---------------------------- 1. 산책 일정 등록 ---------------------------
+	
 	// WalkSchedules 객체를 받아 DB에 새 산책 일정을 INSERT하는 메서드
 	public int insert(WalkSchedules ws) {
 
@@ -72,9 +75,8 @@ public class SchedulesDAO extends DAO {
 		return list; // 전체 산책 일정 리스트 반환
 	}
 
-	/// ------------------------------- 3. 특정 산책 일정 삭제
-	/// -----------------------------------------------
-	///
+	/// ------------------------------- 3. 특정 산책 일정 삭제----------------------------------------
+	
 	// dogId와 dateTime을 기준으로 특정 일정을 삭제하는 메서드
 	public int deleteSchedule(int dogId, String dateTime) {
 		String sql = "DELETE FROM tbl_walk_schedules WHERE dogId = ? AND dateTime = ?";
@@ -85,7 +87,7 @@ public class SchedulesDAO extends DAO {
 			psmt.setInt(1, dogId); // 강아지 ID
 			psmt.setString(2, dateTime); // 산책 시간
 
-			return psmt.executeUpdate(); // 삭제 실행 및 결과 반환
+			return psmt.executeUpdate(); // 삭제 3실행 및 결과 반환
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -96,8 +98,8 @@ public class SchedulesDAO extends DAO {
 		return 0; // 실패 시 0 반환
 	}
 
-	/// ---------------------------- 4. 강아지 ID로 산책 일정 조회
-	/// --------------------------------------------
+	/// ---------------------------- 4. 강아지 ID로 산책 일정 조회-----------------------------------
+	
 
 	// 특정 강아지 ID에 해당하는 모든 산책 일정을 포맷팅된 문자열로 반환
 	public List<String> getSchedulesByDogId(int dogId) {

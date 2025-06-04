@@ -1,7 +1,12 @@
-package yedam;
+package Dogmain;
 
 import java.util.List;
 import java.util.Scanner;
+
+import Dogvalue.Dogs;
+import Dogvalue.WalkSchedules;
+import dogDAO.DogDAO;
+import dogDAO.SchedulesDAO;
 
 // 메인 클래스: 강아지와 산책 일정 관리 콘솔 프로그램 실행
 public class Dogmain {
@@ -83,11 +88,11 @@ public class Dogmain {
                     System.out.println("====================================");            
                     System.out.println("강아지 번호를 입력하세요>> ");
                     int DogId = Integer.parseInt(scn.nextLine());  
-                    System.out.println("산책 날짜>> ");
+                    System.out.println("산책 날짜를 입력하세요.>> ");
                     String dateTime = scn.nextLine();               
-                    System.out.println("장소 >>");
+                    System.out.println("장소를 입력하세요. >>");
                     String location = scn.nextLine();               
-                    System.out.println("산책시간 >>");
+                    System.out.println("산책시간을 입력하세요 >>");
                     int walktime = Integer.parseInt(scn.nextLine()); 
 
                     // WalkSchedules 객체 생성 (산책 일정 정보)
@@ -135,7 +140,7 @@ public class Dogmain {
                     System.out.println("====================================");
                     System.out.print("삭제할 산책 일정의 강아지 번호를 입력하세요>> ");
                     int deleteId = Integer.parseInt(scn.nextLine());  // 삭제할 강아지 ID 입력
-                    System.out.print("삭제할 날짜/시간을 입력하세요  >> ");
+                    System.out.print("삭제할 날짜를 입력하세요  >> ");
                     String deleteTime = scn.nextLine();  // 삭제할 산책 날짜/시간 입력
                     int delResult = scheduleDAO.deleteSchedule(deleteId, deleteTime);  // 삭제 시도
                     if (delResult > 0) {

@@ -1,4 +1,4 @@
-package yedam;
+package dogDAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public class DAO {
     //  데이터베이스 접속을 위한 정보 설정 (Oracle DB 기준) 
-    String url = "jdbc:oracle:thin:@localhost:1521:xe"; // Oracle DB에 접속하기 위한 주소
+    String url = "jdbc:oracle:thin:@192.168.0.34:1521:xe"; // Oracle DB에 접속하기 위한 주소
     String id = "scott";    // DB 접속 ID (사용자 계정)
     String pass = "tiger";  // DB 접속 비밀번호
 

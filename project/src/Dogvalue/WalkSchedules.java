@@ -1,4 +1,4 @@
-package yedam;
+package Dogvalue;
 
 public class WalkSchedules {
   public int dogId;

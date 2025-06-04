@@ -1,8 +1,10 @@
-package yedam;
+package dogDAO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import Dogvalue.Dogs;
 
 
 public class DogDAO extends DAO {

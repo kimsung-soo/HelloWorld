@@ -1,4 +1,4 @@
-package yedam;
+package Dogvalue;
 
 public class Dogs {
     private int id;
@@ -49,6 +49,6 @@ public class Dogs {
 
     @Override
     public String toString() {
-        return "강아지 번호: " + id + ", 이름: " + name + ", 품종: " + breed + ", 나이: " + age + "";
+        return "강아지 번호: " + id + ", 이름: " + name + ", 품종: " + breed + ", 나이: " + age + "살";
     }
 }
