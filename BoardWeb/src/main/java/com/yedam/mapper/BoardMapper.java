@@ -9,10 +9,11 @@ import com.yedam.vo.BoardVO;
  */
 public interface BoardMapper {
 	public List<BoardVO> selectList();  //목록
+	public List<BoardVO> selectListWithPaging(int page);
 	public BoardVO selectBoard(int bno); //단건 조회
 	public int updateReadCnt(int bno); //조회수 카운트 증가
 	public int insertBoard(BoardVO board);
 	public int updateBoard(BoardVO board);
-	public int deleteBoard(int bno);
+	public int deleteBoard(int boardNo);
 	
 }

@@ -8,24 +8,44 @@
 	<select id="selectList" resultType="Board">
 		select * from tbl_board
 	</select>
+	
+		<!-- 페이징 조회 -->
+	<select id="selectListWithPaging" parameterType="int" resultType="Board">
+		select b.*
+		from (select rownum rn, a.*
+		from (select *
+		from tbl_board
+		order by board_no desc) a) b
+		where b.rn > (#{page} -1) * 5
+		<![CDATA[
+		and b.rn <= #{page} * 5
+		]]>
+	</select>
+	
 
 	<!-- 상세조회(selectBoard) -->
 	<select id="selectBoard" parameterType="int" resultType="Board">
-		SELECT board_no,
+		SELECT
+		board_no,
 		title,
 		content,
 		writer,
 		write_date,
 		read_cnt
 		FROM tbl_board
-		WHERE board_no = #{bno}
+		WHERE
+		board_no = #{bno}
 	</select>
-	
+
+
+
+
+
 	<!-- 조회수 증가 -->
 	<update id="updateReadCnt" parameterType="int">
-	update tbl_board
-	set    read_cnt = read_cnt +1
-	WHERE board_no = #{bno}
+		update tbl_board
+		set read_cnt = read_cnt +1
+		WHERE board_no = #{bno}
 	</update>
 
 
@@ -59,6 +79,6 @@
 	<delete id="deleteBoard" parameterType="int">
 		delete tbl_board
 		where
-		board_no = #{bno}
+		board_no = #{boardNo}
 	</delete>
 </mapper>
