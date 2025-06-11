@@ -19,5 +19,7 @@ public class PageDTO {
 		//이전, 이후 페이지의 존재 체크
 		this.prev =this.start > 1;
 		this.next = this.end < realEnd;
+		
+		
 	}
 }

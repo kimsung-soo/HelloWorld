@@ -3,12 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<settings>
-<setting name ="mapUnderscoreToCamelCase" value="true"/>
-</settings>
-<typeAliases>
-  <typeAlias alias="Board" type="com.yedam.vo.BoardVO"/>
- </typeAliases> 
+  <settings>
+    <setting name="mapUnderscoreToCamelCase" value="true"/>
+  </settings>
+
+  <typeAliases>
+    <typeAlias alias="Board" type="com.yedam.vo.BoardVO"/>
+    <typeAlias alias="Search" type="com.yedam.common.SearchDTO"/>
+    <typeAlias alias="Member" type="com.yedam.vo.MemberVO"/>
+  </typeAliases>
+
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
@@ -20,7 +24,10 @@
       </dataSource>
     </environment>
   </environments>
+
   <mappers>
     <mapper resource="com/yedam/mapper/BoardMapper.xml"/>
+    <mapper resource="com/yedam/mapper/MemberMapper.xml"/>
   </mappers>
+
 </configuration>
