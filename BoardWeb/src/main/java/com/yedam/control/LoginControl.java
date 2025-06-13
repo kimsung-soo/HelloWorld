@@ -28,7 +28,9 @@ public class LoginControl implements Control {
 			//세션객체에 setAttribute("logID,member,memberId)
 			HttpSession session= req.getSession(); //cookie
 			session.setAttribute("logId", member.getMemberId());
+			session.setAttribute("auth", member.getResponsibility());
 			
+			//권한에  따라 시작페이지정
 			if(member.getResponsibility().equals("User")) {
 			resp.sendRedirect("addBoard.do");
 			}else if (member.getResponsibility().equals("Admin")) {

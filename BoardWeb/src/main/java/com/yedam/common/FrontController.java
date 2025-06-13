@@ -1,7 +1,5 @@
 package com.yedam.common;
 
-
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,53 +10,47 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.yedam.control.AddBoardControl;
-import com.yedam.control.BoardControl;
-import com.yedam.control.BoardListControl;
-import com.yedam.control.LoginControl;
-import com.yedam.control.LoginFormControl;
-import com.yedam.control.LogoutControl;
-import com.yedam.control.MemberListControl;
-import com.yedam.control.ModifyBoardControl;
-import com.yedam.control.RemoveBoardControl;
+import com.yedam.control.*;
 
-/*
- * M-V-Control역할.
- * url패턴 - 실행서블릿 관리.
- */
 public class FrontController extends HttpServlet {
 	Map<String, Control> map;
 
 	public FrontController() {
-		map = new HashMap<String, Control>();
+		map = new HashMap<>();
 	}
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		// boardList.do - 글목록 출력 기능.
-		// 처리순서가 중요.
-		map.put("/boardList.do", new BoardListControl()); // 글목록.
-		map.put("/board.do", new BoardControl()); // 상세화면.
+		map.put("/boardList.do", new BoardListControl());
+		map.put("/board.do", new BoardControl());
 		map.put("/addBoard.do", new AddBoardControl());
-		map.put("/modifyBoard.do", new ModifyBoardControl()); // 수정화면
-		map.put("/removeBoard.do", new RemoveBoardControl()); // 삭제화면
-		// member관련.
-		map.put("/loginForm.do", new LoginFormControl()); // 화면.
-		map.put("/login.do", new LoginControl()); // id,pw 로그인처리.
-		map.put("/logout.do", new LogoutControl()); // id,pw 로그인처리.
-		//회원 목록
-		 map.put("/memberList.do", new MemberListControl()); 
-	
+		map.put("/modifyBoard.do", new ModifyBoardControl());
+		map.put("/removeBoard.do", new RemoveBoardControl());
+
+		map.put("/loginForm.do", new LoginFormControl());
+		map.put("/login.do", new LoginControl());
+		map.put("/logout.do", new LogoutControl());
+
+		map.put("/memberList.do", new MemberListControl());
+		map.put("/allProduct.do", new AllControl());
+
+		map.put("/replyList.do", new ReplyListControl());
+		map.put("/addReply.do", new AddReplyControl());
+		map.put("/removeReply.do", new RemoveReplyControl());
+		map.put("/getReply.do", new GetReplyControl());
 	}
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// url이 호출(http://localhost:8080/BoardWeb/boardList.do) -> 페이지 호출 -> Control.
-		String uri = req.getRequestURI(); // /BoardWeb/boardList.do
-		String context = req.getContextPath(); // /BoardWeb or /HelloWorld
-		String page = uri.substring(context.length()); // /boardList.do
-		Control sub = map.get(page);
-		sub.exec(req, resp);
+		String uri = req.getRequestURI();
+		String context = req.getContextPath();
+		String page = uri.substring(context.length());
 
+		Control sub = map.get(page);
+		if (sub != null) {
+			sub.exec(req, resp);
+		} else {
+			resp.sendError(HttpServletResponse.SC_NOT_FOUND, "요청하신 페이지를 찾을 수 없습니다.");
+		}
 	}
 }

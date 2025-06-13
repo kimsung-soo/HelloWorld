@@ -13,16 +13,15 @@
     where member_id = #{id}
     and   password = #{pw}
   </select>
-
-
-<!-- 회원목록 -->
-<select id= "selectList" resultType ="Member" parameterType="string">
- select member_id
+  
+  <!-- 회원목록 -->
+  <select id="selectList" resultType="Member" parameterType="string">
+    select member_id
           ,member_name
           ,password
           ,responsibility
     from tbl_member
     order by ${order}
-</select>
+  </select>
 
 </mapper>
