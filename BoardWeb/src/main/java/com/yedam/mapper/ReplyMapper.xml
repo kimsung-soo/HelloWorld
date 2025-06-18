@@ -5,12 +5,11 @@
 <mapper namespace="com.yedam.mapper.ReplyMapper">
 
 	<insert id="insertReply" parameterType="com.yedam.vo.ReplyVO">
-	<selectKey keyProperty ="replyNo" order="BEFORE" resultType="int">
-	select reply_seq.nextval from dual
-	</selectKey>
-	
-	insert into tbl_reply (reply_no, board_no, reply, replyer)
-		values (reply_seq.nextval, #{boardNo}, #{reply}, #{replyer})
+		<selectKey keyProperty="replyNo" order="BEFORE" resultType="int">
+			select reply_seq.nextval from dual
+		</selectKey>
+		insert into tbl_reply (reply_no, board_no, reply, replyer)
+		values (#{replyNo}, #{boardNo}, #{reply}, #{replyer})
 	</insert>
 
 	<delete id="deleteReply" parameterType="int">
@@ -24,11 +23,22 @@
 		where reply_no = #{rno}
 	</select>
 	
-	<select id="selectReplies" parameterType="int">
-		select *
-		from tbl_reply
-		where board_no = #{bno}
-		order by reply_no desc
+	<select id="selectList" parameterType="int">
+		select a.*
+		from  (select /*+INDEX_DESC (r pk_reply) */rownum rn, r.*
+		       from tbl_reply r
+		       where board_no = #{bno}) a
+		where a.rn > (#{page} - 1) * 5 * 0
+		<![CDATA[
+		and   a.rn <= (#{page} * 50000)
+		]]>
+	</select>
+	
+	<!-- 댓글건수 -->
+	<select id="selectTotal" parameterType="int" resultType="int">
+	    select count(1)
+	    from tbl_reply
+	    where board_no = #{bno}
 	</select>
 
 </mapper>
